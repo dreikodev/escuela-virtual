@@ -4,417 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instituto TecnoFuture</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --purple:  #230443;
-      --vivid:   #7c3aed;
-      --glow:    #a855f7;
-      --white:   #ffffff;
-      --offwhite:#f4f0fa;
-      --black:   #0a0a0a;
-      --gray:    #1a1a2e;
-      --muted:   rgba(255,255,255,0.45);
-    }
-
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
-    body {
-      background: var(--black);
-      font-family: 'DM Sans', sans-serif;
-      color: var(--white);
-      min-height: 100vh;
-      display: flex;
-      overflow: hidden;
-    }
-
-    /* ══════════════════════════════
-       SIDEBAR NAV — izquierda fija
-    ══════════════════════════════ */
-    .sidebar-nav {
-      position: fixed;
-      top: 0; left: 0;
-      width: 200px;
-      height: 100vh;
-      background: var(--white);
-      border-right: 1px solid rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1.4rem;
-      z-index: 50;
-      box-shadow: 4px 0 32px rgba(0,0,0,0.35);
-    }
-
-    .sidebar-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 900;
-      color: var(--black);
-      letter-spacing: -.02em;
-      margin-bottom: 3rem;
-      line-height: 1.2;
-    }
-    .sidebar-logo em {
-      font-style: normal;
-      color: var(--vivid);
-      display: block;
-    }
-
-    .sidebar-links {
-      display: flex;
-      flex-direction: column;
-      gap: .2rem;
-      flex: 1;
-    }
-    .sidebar-links a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: rgba(10,10,10,0.5);
-      text-decoration: none;
-      font-size: .82rem;
-      font-weight: 500;
-      padding: 10px 12px;
-      border-radius: 8px;
-      transition: all .2s;
-      letter-spacing: .01em;
-    }
-    .sidebar-links a .dot-nav {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--glow);
-      opacity: 0;
-      transition: opacity .2s;
-      flex-shrink: 0;
-    }
-    .sidebar-links a:hover {
-      color: var(--black);
-      background: rgba(124,58,237,0.08);
-    }
-    .sidebar-links a:hover .dot-nav { opacity: 1; }
-    .sidebar-links a.active {
-      color: var(--black);
-      background: rgba(124,58,237,0.1);
-      font-weight: 600;
-    }
-    .sidebar-links a.active .dot-nav { opacity: 1; }
-
-    .sidebar-bottom {
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(0,0,0,0.08);
-    }
-    .sidebar-tag {
-      font-size: .68rem;
-      color: var(--glow);
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: .5rem;
-    }
-    .sidebar-inst {
-      font-size: .75rem;
-      color: rgba(10,10,10,0.4);
-      line-height: 1.5;
-    }
-
-    /* ══════════════════════════════
-       MAIN — contenido principal
-    ══════════════════════════════ */
-    .main {
-      margin-left: 200px;
-      flex: 1;
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      overflow-y: auto;
-      background: var(--black);
-    }
-
-    /* ── TOPBAR ── */
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 1.2rem 2.5rem;
-      gap: 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .topbar-link {
-      font-size: .82rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .topbar-link:hover { color: var(--white); }
-
-    .btn-register {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 22px;
-      border-radius: 10px;
-      font-size: .83rem;
-      font-weight: 600;
-      text-decoration: none;
-      background: var(--white);
-      color: var(--black);
-      transition: background .2s, transform .2s, box-shadow .2s;
-      letter-spacing: .01em;
-    }
-    .btn-register:hover {
-      background: var(--offwhite);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(255,255,255,0.12);
-    }
-
-    /* ── HERO SECTION ── */
-    .hero {
-      padding: 4rem 2.5rem 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Grid decorativo de fondo */
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(168,85,247,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(168,85,247,0.04) 1px, transparent 1px);
-      background-size: 44px 44px;
-      pointer-events: none;
-    }
-
-    /* Orbe */
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
-      top: -100px; right: -100px;
-      animation: float 10s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes float {
-      0%,100% { transform: translateY(0) scale(1); }
-      50%      { transform: translateY(30px) scale(1.04); }
-    }
-
-    .hero-inner { position: relative; z-index: 1; max-width: 680px; }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 13px;
-      border: 1px solid rgba(168,85,247,.3);
-      border-radius: 100px;
-      font-size: .72rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--glow);
-      background: rgba(124,58,237,.1);
-      margin-bottom: 1.6rem;
-    }
-    .pulse {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--vivid); box-shadow: 0 0 6px var(--vivid);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.2} }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.6rem, 4vw, 4rem);
-      font-weight: 900;
-      line-height: 1.06;
-      letter-spacing: -.03em;
-      margin-bottom: 1.2rem;
-      color: var(--white);
-    }
-    .hero h1 .white-block {
-      display: inline-block;
-      background: var(--white);
-      color: var(--black);
-      padding: 0 12px;
-      border-radius: 6px;
-    }
-
-    .hero-sub {
-      font-size: .98rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 520px;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 24px;
-      border-radius: 10px;
-      font-size: .88rem;
-      font-weight: 600;
-      text-decoration: none;
-      background: linear-gradient(135deg, var(--vivid), var(--glow));
-      color: #fff;
-      box-shadow: 0 0 24px rgba(124,58,237,.4);
-      transition: transform .2s, box-shadow .2s;
-      letter-spacing: .01em;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124,58,237,.6); }
-    .arr { transition: transform .2s; }
-    .btn-primary:hover .arr { transform: translateX(4px); }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 11px 22px;
-      border-radius: 10px;
-      font-size: .88rem;
-      font-weight: 400;
-      text-decoration: none;
-      color: rgba(255,255,255,.65);
-      border: 1px solid rgba(255,255,255,.14);
-      transition: all .2s;
-    }
-    .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.04); }
-
-    /* ── SERVICIOS SECTION ── */
-    .servicios {
-      padding: 0 2.5rem 4rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 1.6rem;
-    }
-    .section-label span {
-      font-size: .7rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--glow);
-      font-weight: 600;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(255,255,255,0.07);
-    }
-
-    .servicios-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-
-    .servicio-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
-      padding: 1.5rem;
-      transition: border-color .25s, background .25s, transform .25s;
-      cursor: pointer;
-    }
-    .servicio-card:hover {
-      border-color: rgba(168,85,247,.35);
-      background: rgba(124,58,237,.06);
-      transform: translateY(-3px);
-    }
-
-    .serv-icon {
-      width: 42px; height: 42px;
-      border-radius: 10px;
-      display: grid; place-items: center;
-      font-size: 20px;
-      margin-bottom: 1rem;
-    }
-    .s1 { background: rgba(124,58,237,.18); }
-    .s2 { background: rgba(251,191,36,.12); }
-    .s3 { background: rgba(168,85,247,.14); }
-    .s4 { background: rgba(34,197,94,.1); }
-    .s5 { background: rgba(239,68,68,.1); }
-    .s6 { background: rgba(59,130,246,.1); }
-
-    .serv-nombre {
-      font-size: .88rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: .4rem;
-    }
-    .serv-desc {
-      font-size: .75rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .serv-tag {
-      display: inline-block;
-      margin-top: .8rem;
-      font-size: .65rem;
-      padding: 3px 9px;
-      border-radius: 100px;
-      background: rgba(168,85,247,.14);
-      border: 1px solid rgba(168,85,247,.25);
-      color: var(--glow);
-      letter-spacing: .05em;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 1.5rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .footer-copy {
-      font-size: .75rem;
-      color: rgba(255,255,255,.25);
-    }
-    .footer-links {
-      display: flex;
-      gap: 1.2rem;
-    }
-    .footer-links a {
-      font-size: .75rem;
-      color: rgba(255,255,255,.25);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .footer-links a:hover { color: rgba(255,255,255,.6); }
-
-    /* ── Responsive ── */
-    @media (max-width: 700px) {
-      .sidebar-nav { width: 160px; }
-      .main { margin-left: 160px; }
-      .servicios-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 500px) {
-      .sidebar-nav { display: none; }
-      .main { margin-left: 0; }
-      .servicios-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -423,16 +13,16 @@
     <div class="sidebar-logo">Tecno<em>Future</em></div>
 
     <nav class="sidebar-links">
-      <a href="#" class="active">
+      <a href="index.html" class="active">
+        <span class="dot-nav"></span>Inicio
+      </a>
+      <a href="html/presentacion.html">
         <span class="dot-nav"></span>Presentación
       </a>
       <a href="#">
         <span class="dot-nav"></span>Nosotros
       </a>
-      <a href="#">
-        <span class="dot-nav"></span>Contacto
-      </a>
-      <a href="#">
+      <a href="html/footer.html">
         <span class="dot-nav"></span>Footer
       </a>
     </nav>
@@ -483,50 +73,14 @@
         <span>Nuestros servicios</span>
       </div>
 
-      <div class="servicios-grid">
+      <div class="servicios-grid" id="preview-servicios">
+        <!-- Las 3 primeras tarjetas se renderizan desde script/servicios.js -->
+      </div>
 
-        <div class="servicio-card">
-          <div class="serv-icon s1">💻</div>
-          <div class="serv-nombre">Desarrollo Full Stack</div>
-          <div class="serv-desc">Aprende frontend y backend con tecnologías del mercado actual.</div>
-          <span class="serv-tag">6 meses</span>
-        </div>
-
-        <div class="servicio-card">
-          <div class="serv-icon s2">🤖</div>
-          <div class="serv-nombre">Inteligencia Artificial</div>
-          <div class="serv-desc">Machine learning, redes neuronales y herramientas de IA generativa.</div>
-          <span class="serv-tag">4 meses</span>
-        </div>
-
-        <div class="servicio-card">
-          <div class="serv-icon s3">🔒</div>
-          <div class="serv-nombre">Ciberseguridad</div>
-          <div class="serv-desc">Protección de sistemas, ethical hacking y análisis forense digital.</div>
-          <span class="serv-tag">5 meses</span>
-        </div>
-
-        <div class="servicio-card">
-          <div class="serv-icon s4">📊</div>
-          <div class="serv-nombre">Data Science</div>
-          <div class="serv-desc">Análisis de datos, visualización y toma de decisiones basada en datos.</div>
-          <span class="serv-tag">3 meses</span>
-        </div>
-
-        <div class="servicio-card">
-          <div class="serv-icon s5">☁️</div>
-          <div class="serv-nombre">Cloud Computing</div>
-          <div class="serv-desc">AWS, Azure y GCP: infraestructura, DevOps y arquitectura cloud.</div>
-          <span class="serv-tag">4 meses</span>
-        </div>
-
-        <div class="servicio-card">
-          <div class="serv-icon s6">📱</div>
-          <div class="serv-nombre">Desarrollo Móvil</div>
-          <div class="serv-desc">Apps nativas y multiplataforma con React Native y Flutter.</div>
-          <span class="serv-tag">5 meses</span>
-        </div>
-
+      <div class="servicios-ver-mas">
+        <a href="html/servicios.html" class="btn-ver-mas">
+          Ver todos los servicios <span class="arr">→</span>
+        </a>
       </div>
     </section>
 
@@ -541,6 +95,28 @@
     </footer>
 
   </div>
+
+  <script>
+    const serviciosPreview = [
+      { clase: 'c1', icono: '📊', titulo: 'Consulta de Notas',    descripcion: 'Revisa tus calificaciones y boletines por bimestre en tiempo real.',  enlace: 'Ver notas →' },
+      { clase: 'c2', icono: '📅', titulo: 'Horario de Clases',    descripcion: 'Descarga tu horario semanal actualizado con aulas y docentes.',         enlace: 'Ver horario →' },
+      { clase: 'c3', icono: '📚', titulo: 'Material Educativo',   descripcion: 'Accede a guías, separatas y recursos digitales de todos los cursos.',   enlace: 'Ver materiales →' }
+    ];
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const grid = document.getElementById('preview-servicios');
+      serviciosPreview.forEach(function (s) {
+        const card = document.createElement('div');
+        card.className = 'card ' + s.clase;
+        card.innerHTML =
+          '<div class="card-icon">' + s.icono + '</div>' +
+          '<h3>' + s.titulo + '</h3>' +
+          '<p>' + s.descripcion + '</p>' +
+          '<span class="card-link">' + s.enlace + '</span>';
+        grid.appendChild(card);
+      });
+    });
+  </script>
 
 </body>
 </html>
