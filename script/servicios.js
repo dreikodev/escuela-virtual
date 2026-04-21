@@ -6,7 +6,7 @@ const servicios = [
     titulo: 'Consulta de Notas',
     descripcion: 'Revisa tus calificaciones y boletines por bimestre en tiempo real.',
     enlace: 'Ver notas →',
-    url: '../html/notas.html'
+    url: '../html/servicios/notas.html'
   },
   {
     clase: 'c2',
