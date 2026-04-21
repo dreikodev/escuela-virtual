@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consulta de Notas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/servicios/notas.css" />
+</head>
+<body>
+
+  <!-- FONDO -->
+  <div class="bg-wrap">
+    <img src="/imagenes/fondo_servicios.png" alt="Fondo" />
+  </div>
+
+  <!-- MODAL DNI -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-box">
+      <div class="modal-icon">🎓</div>
+      <h2>Consulta de Notas</h2>
+      <p>Ingresa tu <strong>DNI</strong> para ver la información del alumno</p>
+      <input type="text" id="dni-input" maxlength="8" placeholder="Ej: 12345678" />
+      <div class="modal-error" id="modal-error">⚠️ Ingresa un DNI válido de 8 dígitos</div>
+      <div class="modal-btns">
+        <button class="btn-salir" onclick="window.location.href='../html/servicios.html'">✖ Salir</button>
+        <button class="btn-ingresar" onclick="verificarDNI()">Ingresar →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERFAZ DE NOTAS -->
+  <div class="page hidden" id="pagina-notas">
+
+    <!-- BOTÓN SALIR -->
+    <button class="btn-volver" onclick="window.location.href='../html/servicios.html'">← Volver a Servicios</button>
+
+    <!-- PERFIL ALUMNO -->
+    <div class="perfil-card">
+      <img src="/imagenes/user.png" alt="Foto alumno" class="foto-alumno" />
+      <div class="perfil-info">
+        <h1 id="nombre-alumno">Rick Pepino García</h1>
+        <div class="perfil-badges">
+          <span class="badge">📋 DNI: <strong id="dni-mostrado">—</strong></span>
+          <span class="badge">🏫 5° Secundaria · Sección B</span>
+          <span class="badge">📅 Año 2025</span>
+        </div>
+        <div class="promedio-general">
+          <span class="promedio-num" id="promedio-general">15.4</span>
+          <span class="promedio-label">Promedio General</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SELECTOR BIMESTRE -->
+    <div class="selector-wrap">
+      <span class="selector-label">Ver bimestre:</span>
+      <div class="selector-btns" id="selector-bimestre">
+        <button class="sel-btn active" onclick="cambiarBimestre(0, this)">Bimestre I</button>
+        <button class="sel-btn" onclick="cambiarBimestre(1, this)">Bimestre II</button>
+        <button class="sel-btn" onclick="cambiarBimestre(2, this)">Bimestre III</button>
+        <button class="sel-btn" onclick="cambiarBimestre(3, this)">Bimestre IV</button>
+      </div>
+    </div>
+
+    <!-- TABLA DE NOTAS -->
+    <div class="tabla-wrap">
+      <table class="tabla-notas">
+        <thead>
+          <tr>
+            <th>Curso</th>
+            <th>Participación</th>
+            <th>Trabajos</th>
+            <th>Examen</th>
+            <th>Promedio</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-body">
+          <!-- generado por JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RESUMEN -->
+    <div class="resumen-grid" id="resumen-grid">
+      <!-- generado por JS -->
+    </div>
+
+    <!-- BOTON PDF -->
+    <div class="pdf-wrap">
+      <button class="btn-pdf">📄 Descargar Boletín PDF</button>
+      <span class="pdf-fecha">Última actualización: 15 de abril, 2025</span>
+    </div>
+
+  </div>
+
+  <script src="/script/servicios/notas.js"></script>
+</body>
+</html>
