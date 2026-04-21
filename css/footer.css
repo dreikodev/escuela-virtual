@@ -1,0 +1,18 @@
+.footer {
+  background: #230443;
+  color: white;
+  padding: 20px;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: space-around;
+}
+
+.copy {
+  text-align: center;
+  margin-top: 15px;
+  padding: 10px;
+  background: #7678ed;
+  color: white;
+}
