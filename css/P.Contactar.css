@@ -1,0 +1,480 @@
+/* ================================================================
+   SISTEMA DE DISEÑO INSTITUCIONAL
+   ================================================================ */
+:root {
+  --c-fondo:       #080e1a;
+  --c-base:        #0f172a;
+  --c-superficie:  #1e293b;
+  --c-acento:      #3b82f6; 
+  --c-acento-osc:  #2563eb;
+  --c-blanco:      #f8fafc;
+  --c-humo:        #cbd5e1;
+  --c-texto:       #94a3b8;
+  --c-plomo:       #64748b;
+  
+  --v-bg:     rgba(255, 255, 255, 0.04);
+  --v-borde:  rgba(255, 255, 255, 0.07);
+
+  --r-sm:   6px;
+  --r-md:   12px;
+  --r-lg:   20px;
+  --r-pill: 999px;
+
+  --sh-card: 0 25px 60px rgba(0, 0, 0, 0.5);
+  --sh-btn: 0 10px 25px rgba(0, 0, 0, 0.4);
+
+  --f-serif: 'Lora', Georgia, serif;
+  --f-sans:  'Open Sans', system-ui, sans-serif;
+
+  /* Curvas de animación ultra fluidas (Premium easing) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-base:   0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --t-suave:  0.7s var(--ease-out);
+}
+
+/* ================================================================
+   RESET
+   ================================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--f-sans);
+  background: var(--c-fondo);
+  color: var(--c-texto);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; }
+
+/* ================================================================
+   BOTÓN DE REGRESAR
+   ================================================================ */
+.btn-regresar {
+  position: fixed;
+  top: 32px; left: 32px;
+  width: 52px; height: 52px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--v-borde);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+  color: var(--c-humo);
+  transition: all var(--t-base);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateX(-20px) scale(0.9);
+  animation: aparecer-izquierda 0.8s var(--ease-out) 0.2s forwards;
+}
+
+.btn-regresar svg { width: 20px; height: 20px; transition: transform var(--t-base); }
+
+.btn-regresar:hover {
+  background: var(--c-superficie);
+  color: var(--c-blanco);
+  border-color: var(--c-acento);
+  transform: translateX(-4px) scale(1);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+/* ================================================================
+   ANIMACIONES FLUIDAS (Técnica Blur-In / Blur-Out)
+   ================================================================ */
+.animar {
+  opacity: 0;
+  transform: translateY(25px);
+  filter: blur(6px); /* El elemento empieza ligeramente borroso */
+  animation: revelar-fluido 0.9s var(--ease-out) forwards;
+}
+
+/* Escalonamiento orgánico (no lineal) */
+.animar--1 { animation-delay: 0.1s; }
+.animar--2 { animation-delay: 0.2s; }
+.animar--3 { animation-delay: 0.35s; }
+.animar--4 { animation-delay: 0.5s; }
+.animar--5 { animation-delay: 0.4s; }
+
+@keyframes revelar-fluido {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes aparecer-izquierda {
+  0% { opacity: 0; transform: translateX(-20px) scale(0.9); filter: blur(4px); }
+  100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); }
+}
+
+/* Animación lateral para el formulario */
+.contacto__formulario-wrap.animar {
+  transform: translateX(40px);
+  filter: blur(6px);
+  animation: aparecer-derecha 1s var(--ease-out) 0.4s forwards;
+}
+
+@keyframes aparecer-derecha {
+  0% { opacity: 0; transform: translateX(40px); filter: blur(6px); }
+  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
+
+/* ================================================================
+   LAYOUT
+   ================================================================ */
+.seccion-contacto {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 40px 80px;
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(30, 41, 59, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(15, 23, 42, 0.7) 0%, transparent 40%),
+    linear-gradient(180deg, var(--c-base) 0%, var(--c-fondo) 100%);
+}
+
+.contacto__contenedor {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start; /* Alineación superior para que los canales no se estiren */
+}
+
+/* ================================================================
+   INFORMACIÓN Y CANALES
+   ================================================================ */
+.contacto__info {
+  max-width: 480px;
+  padding-top: 20px;
+}
+
+.contacto__etiqueta {
+  display: inline-block;
+  font-family: var(--f-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--c-acento);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  padding-left: 16px;
+  border-left: 3px solid var(--c-acento);
+}
+
+.contacto__titulo {
+  font-family: var(--f-serif);
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--c-blanco);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 28px;
+}
+
+.contacto__titulo-acentos {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--c-acento);
+}
+
+.contacto__descripcion {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--c-texto);
+  margin-bottom: 48px;
+}
+
+/* --- Canales --- */
+.canales {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.canales__titulo {
+  font-family: var(--f-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--c-plomo);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+.canal {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px;
+  background: var(--v-bg);
+  border: 1px solid transparent;
+  border-radius: var(--r-md);
+  transition: all var(--t-suave);
+}
+
+.canal:hover {
+  background: rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.15);
+  transform: translateX(5px); /* Pequeño movimiento fluido al interactuar */
+}
+
+.canal--horario {
+  margin-top: 8px;
+  border: 1px dashed var(--v-borde);
+  background: transparent;
+}
+
+.canal--horario:hover {
+  background: var(--v-bg);
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.canal__icono {
+  width: 46px; height: 46px;
+  background: var(--c-superficie);
+  border: 1px solid var(--v-borde);
+  border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--t-suave);
+}
+
+.canal__icono svg {
+  width: 20px; height: 20px;
+  color: var(--c-acento);
+}
+
+.canal__icono--whatsapp {
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.2);
+}
+
+.canal__icono--whatsapp svg {
+  color: #25d366;
+}
+
+.canal:hover .canal__icono {
+  transform: scale(1.05);
+}
+
+.canal__texto {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--c-plomo);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.canal strong {
+  display: block;
+  color: var(--c-humo);
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+
+/* ================================================================
+   FORMULARIO INSTITUCIONAL
+   ================================================================ */
+.contacto__formulario-wrap {
+  width: 100%;
+  position: sticky;
+  top: 120px; /* Se queda fijo al hacer scroll si el contenido es largo */
+}
+
+.formulario {
+  background: linear-gradient(180deg, var(--c-base) 0%, rgba(15, 23, 42, 0.8) 100%);
+  border: 1px solid var(--v-borde);
+  border-radius: var(--r-lg);
+  padding: 40px;
+  box-shadow: var(--sh-card);
+  /* Línea decorativa superior sutil */
+  border-top: 2px solid rgba(59, 130, 246, 0.3);
+}
+
+.formulario__cabecera {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--v-borde);
+}
+
+.formulario__titulo {
+  font-family: var(--f-serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--c-blanco);
+  margin-bottom: 8px;
+}
+
+.formulario__subtitulo {
+  font-size: 0.85rem;
+  color: var(--c-plomo);
+}
+
+/* Inputs */
+.formulario__grupo { margin-bottom: 22px; }
+
+.formulario__fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.formulario__label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--c-humo);
+  margin-bottom: 8px;
+}
+
+.formulario__input {
+  width: 100%;
+  padding: 14px 18px;
+  font-family: var(--f-sans);
+  font-size: 0.95rem;
+  color: var(--c-blanco);
+  background: var(--c-fondo);
+  border: 1px solid var(--v-borde);
+  border-radius: var(--r-sm);
+  outline: none;
+  transition: all 0.3s var(--ease-out); /* Transición ultra suave en el focus */
+  appearance: none;
+}
+
+.formulario__input::placeholder {
+  color: var(--c-plomo);
+  opacity: 0.5;
+}
+
+/* Efecto Focus Fluido */
+.formulario__input:focus {
+  border-color: var(--c-acento);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); /* Glow más suave y grande */
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.formulario__select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 45px;
+}
+
+.formulario__textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Footer Formulario */
+.formulario__footer {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--v-borde);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formulario__privacidad {
+  font-size: 0.75rem;
+  color: var(--c-plomo);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.formulario__privacidad a {
+  color: var(--c-acento);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--t-base);
+}
+
+.formulario__privacidad a:hover { color: var(--c-blanco); }
+
+/* ================================================================
+   BOTONES
+   ================================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: var(--r-md);
+  font-family: var(--f-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.4s var(--ease-out); /* Movimiento fluido */
+}
+
+.btn__icono { width: 16px; height: 16px; transition: transform 0.4s var(--ease-out); }
+
+.btn--principal {
+  background: linear-gradient(135deg, var(--c-acento) 0%, var(--c-acento-osc) 100%);
+  color: var(--c-blanco);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
+}
+
+.btn--principal:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(59, 130, 246, 0.35);
+}
+
+.btn--principal:hover .btn__icono { transform: translate(4px, -4px) scale(1.1); }
+.btn--full { width: 100%; }
+.btn:focus-visible { outline: 2px solid var(--c-acento); outline-offset: 3px; }
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 960px) {
+  .seccion-contacto { padding: 100px 24px 80px; }
+  .contacto__contenedor { grid-template-columns: 1fr; gap: 60px; max-width: 640px; }
+  .contacto__info { max-width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .contacto__etiqueta { align-self: center; border-left: none; padding-left: 0; border-bottom: 3px solid var(--c-acento); padding-bottom: 8px; margin-bottom: 20px; }
+  .canales { width: 100%; }
+  .contacto__formulario-wrap { position: static; width: 100%; }
+  .btn-regresar { top: 24px; left: 24px; width: 48px; height: 48px; }
+}
+
+@media (max-width: 540px) {
+  .seccion-contacto { padding: 80px 16px 60px; }
+  .contacto__contenedor { gap: 40px; }
+  .formulario { padding: 28px 24px; }
+  .formulario__fila { grid-template-columns: 1fr; gap: 22px; }
+  .canal { padding: 14px; }
+  .canal strong { font-size: 0.85rem; }
+  .btn-regresar { top: 16px; left: 16px; width: 44px; height: 44px; }
+}
+
+/* ================================================================
+   ACCESIBILIDAD (Reducir movimiento)
+   ================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .animar, .btn-regresar { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
