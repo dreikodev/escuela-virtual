@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instituto TecnoFuture</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/nosotros.css">
 </head>
 <body>
 
@@ -19,11 +20,8 @@
       <a href="html/presentacion.html">
         <span class="dot-nav"></span>Presentación
       </a>
-      <a href="../html/nosotros.html">
-        <span class="dot-nav"></span>Nosotros
-      </a>
-      <a href="html/footer.html">
-        <span class="dot-nav"></span>Footer
+      <a href="html/servicios.html">
+        <span class="dot-nav"></span>Servicios
       </a>
     </nav>
 
@@ -36,14 +34,15 @@
   <!-- ══ MAIN ══ -->
   <div class="main">
 
-    <!-- Topbar con registrar -->
+    <!-- Topbar -->
     <div class="topbar">
       <a href="#" class="topbar-link">Iniciar sesión</a>
       <a href="#" class="btn-register">Registrarse →</a>
     </div>
 
-    <!-- Hero / Presentación -->
+    <!-- ══ HERO / INICIO ══ -->
     <section class="hero">
+      <div class="hero-orbe2"></div>
       <div class="hero-inner">
         <div class="hero-badge">
           <span class="pulse"></span>
@@ -60,22 +59,34 @@
           de la industria para llevarte de cero a profesional en tiempo récord.
         </p>
 
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">+2,400</span>
+            <span class="stat-label">Estudiantes</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">8</span>
+            <span class="stat-label">Programas</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">96%</span>
+            <span class="stat-label">Empleabilidad</span>
+          </div>
+        </div>
+
         <div class="hero-ctas">
           <a href="#" class="btn-primary">Postula ahora <span class="arr">→</span></a>
-          <a href="#" class="btn-ghost">Ver programas</a>
         </div>
       </div>
     </section>
 
-    <!-- Servicios -->
+    <!-- ══ SERVICIOS PREVIEW ══ -->
     <section class="servicios">
       <div class="section-label">
         <span>Nuestros servicios</span>
       </div>
 
-      <div class="servicios-grid" id="preview-servicios">
-        <!-- Las 3 primeras tarjetas se renderizan desde script/servicios.js -->
-      </div>
+      <div class="servicios-grid" id="preview-servicios"></div>
 
       <div class="servicios-ver-mas">
         <a href="html/servicios.html" class="btn-ver-mas">
@@ -84,13 +95,77 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-      <span class="footer-copy">© 2026 Instituto TecnoFuture. Todos los derechos reservados.</span>
-      <div class="footer-links">
-        <a href="#">Privacidad</a>
-        <a href="#">Términos</a>
-        <a href="#">Contacto</a>
+    <!-- ══ NOSOTROS ══ -->
+    <section class="nosotros">
+      <div class="section-label">
+        <span>Sobre nosotros</span>
+      </div>
+
+      <div class="nosotros-inner">
+        <div class="nosotros-texto">
+          <h2 class="nosotros-titulo">¿Quiénes somos?</h2>
+          <p class="desc">
+            Somos una plataforma educativa enfocada en brindar aprendizaje accesible
+            y de calidad para estudiantes mediante tecnología moderna.
+          </p>
+          <img src="imagenes/educativa.png" alt="educacion" class="imagen">
+        </div>
+
+        <div class="info">
+          <div class="nos-card">
+            <span class="nos-icon">🎯</span>
+            <h3>Misión</h3>
+            <p>Brindar educación accesible y de calidad para todos.</p>
+          </div>
+          <div class="nos-card">
+            <span class="nos-icon">🚀</span>
+            <h3>Visión</h3>
+            <p>Ser una plataforma educativa reconocida a nivel nacional.</p>
+          </div>
+          <div class="nos-card">
+            <span class="nos-icon">💡</span>
+            <h3>Valores</h3>
+            <p>Responsabilidad, innovación y compromiso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="footer-full">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">Tecno<em>Future</em></div>
+          <p class="footer-tagline">Formación técnica para el mundo de hoy.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <p>📧 technofuture@gmail.com</p>
+          <p>📞 987 654 321</p>
+          <p>📍 Pisco, Perú</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Horario</h4>
+          <p>Lunes – Viernes</p>
+          <p>8:00 am – 6:00 pm</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Redes Sociales</h4>
+          <p>🔵 Facebook</p>
+          <p>📸 Instagram</p>
+          <p>💼 LinkedIn</p>
+        </div>
+      </div>
+
+      <div class="footer-copy-bar">
+        <span>© 2026 Instituto TecnoFuture. Todos los derechos reservados.</span>
+        <div class="footer-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
       </div>
     </footer>
 
@@ -98,9 +173,9 @@
 
   <script>
     const serviciosPreview = [
-      { clase: 'c1', icono: '📊', titulo: 'Consulta de Notas',    descripcion: 'Revisa tus calificaciones y boletines por bimestre en tiempo real.',  enlace: 'Ver notas →' },
-      { clase: 'c2', icono: '📅', titulo: 'Horario de Clases',    descripcion: 'Descarga tu horario semanal actualizado con aulas y docentes.',         enlace: 'Ver horario →' },
-      { clase: 'c3', icono: '📚', titulo: 'Material Educativo',   descripcion: 'Accede a guías, separatas y recursos digitales de todos los cursos.',   enlace: 'Ver materiales →' }
+      { clase: 'c1', icono: '📊', titulo: 'Consulta de Notas',   descripcion: 'Revisa tus calificaciones y boletines por bimestre en tiempo real.', enlace: 'Ver notas →' },
+      { clase: 'c2', icono: '📅', titulo: 'Horario de Clases',   descripcion: 'Descarga tu horario semanal actualizado con aulas y docentes.',        enlace: 'Ver horario →' },
+      { clase: 'c3', icono: '📚', titulo: 'Material Educativo',  descripcion: 'Accede a guías, separatas y recursos digitales de todos los cursos.',  enlace: 'Ver materiales →' }
     ];
 
     document.addEventListener('DOMContentLoaded', function () {
