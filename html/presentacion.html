@@ -3,95 +3,146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#230443">
+  <meta name="theme-color" content="#0b1120">
+  <meta name="description" content="Escuela Virtual - Institución educativa de prestigio formando líderes del futuro.">
 
   <title>Escuela Virtual — Presentación</title>
 
-  <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../css/presentacion.css">
 </head>
 <body>
 
-<section id="presentacion" class="presentacion" role="banner" aria-label="Presentación de la escuela virtual">
+  <!-- CORREGIDO: Ahora sale de la carpeta html/ con ../ para llegar al index de la raíz -->
+  <a href="../index.html" class="btn-regresar" aria-label="Ir al inicio" title="Ir al inicio">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="19" y1="12" x2="5" y2="12"/>
+      <polyline points="12 19 5 12 12 5"/>
+    </svg>
+  </a>
 
-  <!-- Orbes -->
-  <div class="orbe orbe--1"></div>
-  <div class="orbe orbe--2"></div>
+  <section id="presentacion" class="hero" aria-label="Sección de presentación institucional">
 
-  <!-- Contenido -->
-  <div class="container">
+    <div class="hero__contenedor">
 
-    <!-- TEXTO -->
-    <div class="texto">
+      <header class="hero__contenido">
 
-      <div class="etiqueta">
-        <span class="etiqueta__punto"></span>
-        <span>Matrículas abiertas 2025</span>
-      </div>
-
-      <h1>
-        Escuela<br>
-        <span class="texto--dorado">Virtual</span>
-      </h1>
-
-      <h2>Formando profesionales del futuro</h2>
-
-      <p>
-        Brindamos educación de excelencia basada en innovación,
-        disciplina y tecnología, preparando estudiantes para los
-        desafíos del mundo moderno.
-      </p>
-
-      <!-- Estadísticas -->
-      <div class="stats">
-        <div class="stat">
-          <span class="stat__numero">2,500</span>
-          <span class="stat__texto">Estudiantes</span>
+        <div class="animar animar--1 etiqueta">
+          <span class="etiqueta__punto"></span>
+          <span class="etiqueta__texto">Proceso de admisión 2025</span>
         </div>
 
-        <div class="stat__divisor"></div>
+        <h1 class="animar animar--2 titular">
+          Escuela<br>
+          <em class="titular__acentos">Virtual</em>
+        </h1>
 
-        <div class="stat">
-          <span class="stat__numero">45</span>
-          <span class="stat__texto">Programas</span>
+        <p class="animar animar--3 titular__sub">
+          Institución acreditada de alta calidad académica
+        </p>
+
+        <p class="animar animar--4 titular__descripcion">
+          Brindamos educación de excelencia basada en disciplina, 
+          rigor académico y tecnología, preparando profesionales 
+          íntegros para los desafíos del mundo moderno.
+        </p>
+
+        <ul class="animar animar--5 metricas">
+          <li class="metrica">
+            <span class="metrica__numero">2,500</span>
+            <span class="metrica__texto">Estudiantes activos</span>
+          </li>
+          <li class="metrica__separador" aria-hidden="true"></li>
+          <li class="metrica">
+            <span class="metrica__numero">45</span>
+            <span class="metrica__texto">Programas académicos</span>
+          </li>
+          <li class="metrica__separador" aria-hidden="true"></li>
+          <li class="metrica">
+            <span class="metrica__numero">96%</span>
+            <span class="metrica__texto">Tasa de empleabilidad</span>
+          </li>
+        </ul>
+
+        <div class="animar animar--6 acciones">
+          <a href="#servicios" class="btn btn--principal">
+            <span>Explorar programas</span>
+            <svg class="btn__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <!-- CORREGIDO: Ruta directa porque ambos están en la misma carpeta html/ -->
+          <a href="P.Contactar.html" class="btn btn--secundario">
+            <svg class="btn__icono btn__icono--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>Solicitar información</span>
+          </a>
         </div>
 
-        <div class="stat__divisor"></div>
-
-        <div class="stat">
-          <span class="stat__numero">98%</span>
-          <span class="stat__texto">Satisfacción</span>
+        <div class="animar animar--7 respaldo">
+          <span class="respaldo__titulo">Respaldados por:</span>
+          <div class="respaldo__lista">
+            <div class="respaldo__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg>
+              <span>Ministerio</span>
+            </div>
+            <div class="respaldo__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+              <span>ISO 9001</span>
+            </div>
+            <div class="respaldo__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <span>Excelencia</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Botones -->
-      <div class="botones">
-        <a href="#servicios" class="btn primary" aria-label="Ver programas">
-          Ver programas
-        </a>
+      </header>
 
-        <a href="#contacto" class="btn secondary" aria-label="Ir a contacto">
-          Contáctanos
-        </a>
-      </div>
+      <figure class="hero__media animar animar--4">
+        
+        <div class="media__marco">
+          <!-- CORREGIDO: Ahora sale de html/ con ../ y entra a imágenes/ -->
+          <img 
+            src="../imagenes/presentacion.png" 
+            alt="Campus virtual de la Escuela Virtual donde estudiantes colaboran de forma interactiva" 
+            loading="lazy"
+            width="640"
+            height="480"
+          >
+          <div class="media__overlay" aria-hidden="true"></div>
+        </div>
+
+        <div class="media__insignia">
+          <svg class="media__insignia-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+          <div class="media__insignia-texto">
+            <strong>Institución Acreditada</strong>
+            <span>Resolución Oficial</span>
+          </div>
+        </div>
+
+        <div class="media__estado">
+          <span class="media__estado-indicador"></span>
+          <span>Plataforma activa 24/7</span>
+        </div>
+
+        <div class="media__reflejo" aria-hidden="true"></div>
+
+      </figure>
 
     </div>
 
-    <!-- IMAGEN -->
-    <div class="imagen">
-      <img src="../imagenes/presentacion.png"
-           alt="Estudiantes estudiando en la Escuela Virtual"
-           loading="lazy"
-           decoding="async">
+    <div class="animar animar--8 scroll-indicador" aria-hidden="true">
+      <span class="scroll-indicador__texto">Descubre más</span>
+      <div class="scroll-indicador__rail">
+        <div class="scroll-indicador__punto"></div>
+      </div>
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 </body>
 </html>
