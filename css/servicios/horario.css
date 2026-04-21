@@ -1,0 +1,273 @@
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── VARIABLES ── */
+:root {
+  --morado-base:  #230443;
+  --morado-medio: #7c3aed;
+  --morado-claro: #c084fc;
+  --lavanda:      #e9d5ff;
+  --blanco:       #ffffff;
+  --overlay-bg:   rgba(35, 4, 67, 0.65);
+  --card-bg:      rgba(124, 58, 237, 0.12);
+  --card-border:  rgba(192, 132, 252, 0.25);
+}
+
+/* ── BODY ── */
+body {
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  background: var(--morado-base);
+  color: var(--blanco);
+  overflow-x: hidden;
+}
+
+/* ── FONDO ── */
+.bg-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+.bg-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.bg-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-bg);
+  backdrop-filter: blur(2px);
+}
+
+/* ── PAGE ── */
+.page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 1.5rem 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  animation: fadeIn .5s ease both;
+}
+
+/* ── BOTÓN VOLVER ── */
+.btn-volver {
+  align-self: flex-end;
+  padding: .5rem 1.2rem;
+  border-radius: 30px;
+  border: 1.5px solid var(--card-border);
+  background: rgba(20, 2, 40, 0.75);
+  color: var(--lavanda);
+  font-family: 'Nunito', sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background .2s, border .2s, transform .2s;
+}
+.btn-volver:hover {
+  background: rgba(124, 58, 237, 0.35);
+  border-color: var(--morado-claro);
+  transform: translateX(-3px);
+}
+
+/* ── HEADER ── */
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(20, 2, 40, 0.75);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 1.4rem 1.8rem;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 24px rgba(35, 4, 67, 0.6);
+}
+.header-icon {
+  font-size: 2rem;
+  width: 60px; height: 60px;
+  background: rgba(124, 58, 237, 0.25);
+  border-radius: 16px;
+  display: grid; place-items: center;
+  border: 1px solid var(--card-border);
+  flex-shrink: 0;
+}
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.1;
+}
+header h1 span { color: var(--morado-claro); }
+header p.sub {
+  font-size: .85rem;
+  opacity: .65;
+  margin-top: .3rem;
+}
+
+/* ── SELECTOR DÍA ── */
+.selector-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.selector-label { font-size: .9rem; opacity: .65; }
+.selector-btns  { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+.sel-btn {
+  padding: .45rem 1.1rem;
+  border-radius: 20px;
+  border: 1.5px solid var(--card-border);
+  background: transparent;
+  color: var(--lavanda);
+  font-family: 'Nunito', sans-serif;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+}
+.sel-btn:hover { border-color: var(--morado-claro); background: rgba(192,132,252,.1); }
+.sel-btn.active {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 3px 14px rgba(124,58,237,.4);
+}
+
+/* ── TABLA ── */
+.tabla-wrap {
+  overflow-x: auto;
+  border-radius: 18px;
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(14px);
+  background: rgba(20, 2, 40, 0.6);
+}
+
+.tabla-horario {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+  min-width: 600px;
+}
+
+.tabla-horario thead tr {
+  background: rgba(124, 58, 237, 0.3);
+}
+.tabla-horario th {
+  padding: 1rem 1.2rem;
+  text-align: center;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--morado-claro);
+  white-space: nowrap;
+}
+.tabla-horario th:first-child { text-align: left; }
+
+.tabla-horario td {
+  padding: .85rem 1rem;
+  border-top: 1px solid rgba(192, 132, 252, .1);
+  text-align: center;
+  vertical-align: middle;
+}
+.tabla-horario td:first-child {
+  text-align: left;
+  font-weight: 700;
+  color: var(--morado-claro);
+  font-size: .82rem;
+  white-space: nowrap;
+}
+
+.tabla-horario tbody tr { transition: background .2s; }
+.tabla-horario tbody tr:hover { background: rgba(124,58,237,.1); }
+
+/* celda de curso */
+.celda-curso {
+  display: inline-block;
+  padding: .3rem .8rem;
+  border-radius: 10px;
+  font-size: .82rem;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+}
+.celda-recreo {
+  color: rgba(255,255,255,.4);
+  font-style: italic;
+  font-size: .8rem;
+}
+
+/* colores por curso */
+.color-mat  { background: rgba(96,165,250,.2);  color:#93c5fd; border:1px solid rgba(96,165,250,.3); }
+.color-com  { background: rgba(52,211,153,.2);  color:#6ee7b7; border:1px solid rgba(52,211,153,.3); }
+.color-his  { background: rgba(251,146,60,.2);  color:#fdba74; border:1px solid rgba(251,146,60,.3); }
+.color-cie  { background: rgba(167,139,250,.2); color:#c4b5fd; border:1px solid rgba(167,139,250,.3); }
+.color-ing  { background: rgba(244,114,182,.2); color:#f9a8d4; border:1px solid rgba(244,114,182,.3); }
+.color-art  { background: rgba(250,204,21,.2);  color:#fde68a; border:1px solid rgba(250,204,21,.3); }
+.color-ef   { background: rgba(74,222,128,.2);  color:#86efac; border:1px solid rgba(74,222,128,.3); }
+.color-dpc  { background: rgba(192,132,252,.2); color:#e9d5ff; border:1px solid rgba(192,132,252,.3); }
+
+/* ── LEYENDA ── */
+.leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  align-items: center;
+}
+.leyenda-titulo {
+  font-size: .8rem;
+  opacity: .55;
+  margin-right: .4rem;
+}
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .78rem;
+}
+.leyenda-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── PDF ── */
+.pdf-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.btn-pdf {
+  padding: .7rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: .92rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(124,58,237,.4);
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-pdf:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(124,58,237,.55);
+}
+.pdf-fecha { font-size: .8rem; opacity: .5; }
+
+/* ── ANIMACIONES ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .page { padding: 1rem 1rem 3rem; }
+  .btn-volver { align-self: flex-start; }
+}

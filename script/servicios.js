@@ -14,7 +14,7 @@ const servicios = [
     titulo: 'Horario de Clases',
     descripcion: 'Descarga tu horario semanal actualizado con aulas y docentes.',
     enlace: 'Ver horario →',
-    url: '#'
+    url: '../html/servicios/horario.html'
   },
   {
     clase: 'c3',

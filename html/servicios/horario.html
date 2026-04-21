@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horario de Clases</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/servicios/horario.css" />
+</head>
+<body>
+
+  <!-- FONDO -->
+  <div class="bg-wrap">
+    <img src="/imagenes/fondo_servicios.png" alt="Fondo" />
+  </div>
+
+  <div class="page">
+
+    <!-- BOTÓN VOLVER -->
+    <button class="btn-volver" onclick="window.location.href='../servicios.html'">← Volver a Servicios</button>
+
+    <!-- ENCABEZADO -->
+    <header>
+      <div class="header-icon">📅</div>
+      <div>
+        <h1><span>Horario</span> de Clases</h1>
+        <p class="sub">5° Secundaria · Sección B · Año 2025</p>
+      </div>
+    </header>
+
+    <!-- SELECTOR DÍA (mobile) -->
+    <div class="selector-wrap">
+      <span class="selector-label">Ver día:</span>
+      <div class="selector-btns" id="selector-dia">
+        <button class="sel-btn active" onclick="filtrarDia('todos', this)">Todos</button>
+        <button class="sel-btn" onclick="filtrarDia('Lunes', this)">Lun</button>
+        <button class="sel-btn" onclick="filtrarDia('Martes', this)">Mar</button>
+        <button class="sel-btn" onclick="filtrarDia('Miércoles', this)">Mié</button>
+        <button class="sel-btn" onclick="filtrarDia('Jueves', this)">Jue</button>
+        <button class="sel-btn" onclick="filtrarDia('Viernes', this)">Vie</button>
+      </div>
+    </div>
+
+    <!-- TABLA HORARIO -->
+    <div class="tabla-wrap">
+      <table class="tabla-horario">
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miércoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-body">
+          <!-- generado por horario.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- LEYENDA -->
+    <div class="leyenda" id="leyenda">
+      <!-- generado por horario.js -->
+    </div>
+
+    <!-- BOTÓN DESCARGAR -->
+    <div class="pdf-wrap">
+      <button class="btn-pdf">🖨️ Imprimir Horario</button>
+      <span class="pdf-fecha">Actualizado: 1 de abril, 2025</span>
+    </div>
+
+  </div>
+
+  <script src="../../script/servicios/horario.js"></script>
+</body>
+</html>
